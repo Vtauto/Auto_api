@@ -75,8 +75,6 @@ const InsuranceSchema = new mongoose.Schema(
 
   
 
-<<<<<<< HEAD
 mongoose.model("allinsurancenew", InsuranceSchema);
-=======
+
 mongoose.model("allinsurance", InsuranceSchema);
->>>>>>> 60e2325354f2bfaf819393bd75650e5647f44cb0
