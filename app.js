@@ -396,6 +396,117 @@ app.get('/loan/:id', async (req, res) => {
     }
 });
 
+app.put('/updateLoan', async (req, res) => {
+   
+    const {
+        id,
+        userid,
+        applicant_name,
+        applicant_mobile,
+        vehicle_name,
+        applicant_aadharcard_number,
+        applicant_aadharcard,
+        applicant_pancard_number,
+        applicant_pancard,
+        applicant_dl_number,
+        applicant_dl,
+        applicant_udhyamcard_number,
+        applicant_udhyamcard,
+        applicant_photo,
+        coapplicant_aadharcard_number,
+        coapplicant_aadharcard,
+        coapplicant_pancard_number,
+        coapplicant_pancard,
+        coapplicant_voterid_number,
+        coapplicant_voterid,
+        coapplicant_photo,
+        guarantor_aadharcard_number,
+        guarantor_aadharcard,
+        guarantor_pancard_number,
+        guarantor_pancard,
+        guarantor_voterid_number,
+        guarantor_voterid,
+        guarantor_rc_number,
+        guarantor_rc,
+        guarantor_photo,
+        vehicle_rc_number,
+        vehicle_rc,
+        vehicle_insurance_number,
+        vehicle_insurance,
+        vehicle_tax,
+        vehicle_permit,
+        saler_aadharcardnumber,
+        saler_aadharcard,
+        sale_agreement,
+        electricity_bill,
+        agreement,
+        banking,
+        status
+    } = req.body;
+    
+    try {
+        const updatedLoan = await allloan.findOneAndUpdate(
+            { _id: id },
+            {
+                id,
+                userid,
+                applicant_name,
+                applicant_mobile,
+                vehicle_name,
+                applicant_aadharcard_number,
+                applicant_aadharcard,
+                applicant_pancard_number,
+                applicant_pancard,
+                applicant_dl_number,
+                applicant_dl,
+                applicant_udhyamcard_number,
+                applicant_udhyamcard,
+                applicant_photo,
+                coapplicant_aadharcard_number,
+                coapplicant_aadharcard,
+                coapplicant_pancard_number,
+                coapplicant_pancard,
+                coapplicant_voterid_number,
+                coapplicant_voterid,
+                coapplicant_photo,
+                guarantor_aadharcard_number,
+                guarantor_aadharcard,
+                guarantor_pancard_number,
+                guarantor_pancard,
+                guarantor_voterid_number,
+                guarantor_voterid,
+                guarantor_rc_number,
+                guarantor_rc,
+                guarantor_photo,
+                vehicle_rc_number,
+                vehicle_rc,
+                vehicle_insurance_number,
+                vehicle_insurance,
+                vehicle_tax,
+                vehicle_permit,
+                saler_aadharcardnumber,
+                saler_aadharcard,
+                sale_agreement,
+                electricity_bill,
+                agreement,
+                banking,
+                status
+            },
+            { new: true, useFindAndModify: false }
+        );
+
+        if (!updatedLoan) {
+            return res.send({ status: "error", data: "Loan not found" });
+        }
+
+        res.send({ status: "ok", data: "Loan Updated", id: updatedLoan._id });
+    } catch (error) {
+        console.log(error);
+        res.send({ status: "error", data: error });
+        console.log(error)
+    }
+});
+
 // upload
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
