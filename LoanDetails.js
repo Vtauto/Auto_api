@@ -68,7 +68,7 @@ const LoanSchema = new mongoose.Schema(
     {
         collection: "allloannew",
     }
-);
+);  
 
 
 
