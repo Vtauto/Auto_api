@@ -69,7 +69,7 @@ const InsuranceSchema = new mongoose.Schema(
     },
     { timestamps: true },
     {
-        collection: "allinsurance",
+        collection: "allinsurancenew",
     }
   );
 
