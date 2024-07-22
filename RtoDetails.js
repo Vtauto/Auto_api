@@ -28,10 +28,10 @@ const RtoSchema = new mongoose.Schema(
     },
     { timestamps: true },
     {
-        collection: "allrtoinformation",
+        collection: "allrtoinformationnew",
     }
 );
 
 
 
-mongoose.model("allrtoinformation", RtoSchema);
+mongoose.model("allrtoinformationnew", RtoSchema);

@@ -62,14 +62,14 @@ const LoanSchema = new mongoose.Schema(
         
         //
         status: { type: Boolean, required: true, default: false },
-        default: { type: String, required: true, default: "allloan" }
+        default: { type: String, required: true, default: "allloannew" }
     },
     { timestamps: true },
     {
-        collection: "allloan",
+        collection: "allloannew",
     }
 );
 
 
 
-mongoose.model("allloan", LoanSchema);
+mongoose.model("allloannew", LoanSchema);

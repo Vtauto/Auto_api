@@ -24,13 +24,13 @@ require("./UserDetails");
 const User = mongoose.model("User");
 
 require("./InsuranceDetails");
-const allinsurance = mongoose.model("allinsurance");
+const allinsurance = mongoose.model("allinsurancenew");
 
 require("./RtoDetails");
-const allrtoinformation = mongoose.model("allrtoinformation");
+const allrtoinformation = mongoose.model("allrtoinformationnew");
 
 require("./LoanDetails");
-const allloan = mongoose.model("allloan");
+const allloan = mongoose.model("allloannew");
 
 require("./Wallet");
 const wallets = mongoose.model("wallets");
