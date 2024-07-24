@@ -75,4 +75,3 @@ const InsuranceSchema = new mongoose.Schema(
 
 
 mongoose.model("allinsurancenew", InsuranceSchema);
-
