@@ -9,15 +9,15 @@ const LoanSchema = new mongoose.Schema(
         applicant_name: { type: String, required: true },
         applicant_mobile: { type: Number, required: true },
         vehicle_name: { type: String, required: true },
-        applicant_aadharcard_number: { type: Number, required: true },
-        applicant_aadharcard: { type: [String], required: true },
-        applicant_pancard_number: { type: String, required: true },
-        applicant_pancard: { type: String, required: true },
-        applicant_dl_number: { type: String, required: true },
-        applicant_dl: { type: [String], required: true },
-        applicant_udhyamcard_number: { type: String, required: true },
-        applicant_udhyamcard: { type: String, required: true },
-        applicant_photo: { type: String, required: true },
+        applicant_aadharcard_number: { type: Number,  },
+        applicant_aadharcard: { type: [String],  },
+        applicant_pancard_number: { type: String,  },
+        applicant_pancard: { type: String,  },
+        applicant_dl_number: { type: String,  },
+        applicant_dl: { type: [String],  },
+        applicant_udhyamcard_number: { type: String,  },
+        applicant_udhyamcard: { type: String,  },
+        applicant_photo: { type: String,  },
 
 
         // Co-Applicant
@@ -45,7 +45,7 @@ const LoanSchema = new mongoose.Schema(
         // Vehicle
         vehicle_rc_number: { type: String, },
         vehicle_rc: { type: [String], },
-        vehicle_insurance_number: { type: String,  },
+        vehicle_insurance_number: { type: String, },
         vehicle_insurance: { type: String, },
         vehicle_tax: { type: String },
         vehicle_permit: { type: String, },
@@ -58,8 +58,8 @@ const LoanSchema = new mongoose.Schema(
         electricity_bill: { type: String, },
         agreement: { type: String, },
         banking: { type: String, },
-        
-        
+
+
         //
         status: { type: Boolean, required: true, default: false },
         default: { type: String, required: true, default: "allloannew" }
@@ -68,7 +68,7 @@ const LoanSchema = new mongoose.Schema(
     {
         collection: "allloannew",
     }
-);  
+);
 
 
 
