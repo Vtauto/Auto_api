@@ -30,11 +30,13 @@ require("./RtoDetails");
 const allrtoinformation = mongoose.model("allrtoinformationnew");
 
 require("./LoanDetails");
-const allloan = mongoose.model("allloannew");
+const allloan = mongoose.model("allloannew11");
 
 require("./Wallet");
 const wallets = mongoose.model("wallets");
 
+require("./Message");
+const messageboxnews = mongoose.model("messageboxnews");
 
 
 
@@ -102,6 +104,18 @@ app.post("/userdata", async (req, res) => {
     }
 })
 
+app.get('/getusers', async (req, res) => {
+  
+    try {
+        const allUsers = await User.find({});
+        if (allUsers.length === 0) {
+            return res.status(200).send({ status: "ok", data: [], message: "No users found" });
+        }
+        return res.status(200).send({ status: "ok", data: allUsers });
+    } catch (error) {
+        return res.status(500).send({ status: "error", data: [], message: "An error occurred", error: error.message });
+    }
+});
 
 
 // INSURANCE
@@ -155,13 +169,13 @@ app.get('/insurance/:id', async (req, res) => {
 });
 
 app.put('/updateInsurance', async (req, res) => {
-   console.log(req)
+    console.log(req)
     const { userid, name, mobile_no, vehicle_no, rc_no, rc, aadharcard_no, aadharcard, pan_card_no, pan_card, old_policy_no, old_policy, status, other } = req.body;
-    
+
     try {
-        
+
         const updatedInsurance = await allinsurance.findOneAndUpdate(
-         
+
             { vehicle_no: vehicle_no },
             {
                 userid, name, mobile_no, vehicle_no, rc_no, rc, aadharcard_no, aadharcard, pan_card_no, pan_card, old_policy_no, old_policy, status, other
@@ -174,12 +188,12 @@ app.put('/updateInsurance', async (req, res) => {
         }
 
         res.send({ status: "ok", data: "Insurance Updated", id: updatedInsurance._id });
-      
+
 
     } catch (error) {
-     
+
         res.send({ status: "error", data: error });
-        console.log("error",error)
+        console.log("error", error)
     }
 });
 
@@ -239,9 +253,9 @@ app.get('/rto/:id', async (req, res) => {
 });
 
 app.put('/updateRto', async (req, res) => {
-   
+
     const { userid, vehicle_no, uiid, vehicle_insurance_number, vehicle_insurance, vehicle_insurance_expiry, fitness_number, fitness, fitness_expiry, puc_number, puc, puc_expiry, permit_number, permit, permit_expiry, tax_number, tax, tax_expiry, rc_number, rc, rc_expiry, other } = req.body;
-    
+
     try {
         const updatedRto = await allrtoinformation.findOneAndUpdate(
             { vehicle_no: vehicle_no },
@@ -397,7 +411,7 @@ app.get('/loan/:id', async (req, res) => {
 });
 
 app.put('/updateLoan', async (req, res) => {
-   
+
     const {
         id,
         userid,
@@ -443,7 +457,7 @@ app.put('/updateLoan', async (req, res) => {
         banking,
         status
     } = req.body;
-    
+
     try {
         const updatedLoan = await allloan.findOneAndUpdate(
             { _id: id },
@@ -526,8 +540,8 @@ app.post('/upload', upload.single('image'), (req, res) => {
             url: req.file.path,
         });
     } catch (err) {
-    res.status(500).json({ error: err });
-        
+        res.status(500).json({ error: err });
+
     }
 });
 
@@ -561,6 +575,50 @@ app.post('/getuserwallet', async (req, res) => {
         return res.status(500).send({ status: "error", data: [], message: "An error occurred", error: error.message });
     }
 });
+
+
+
+// Message
+
+app.post('/createmessage', async (req, res) => {
+    const { adminid, userid, documentid, documenttype, documentidentity, message, type } = req.body;
+    
+    try {
+        await messageboxnews.create({
+            adminid, userid, documentid, documenttype, documentidentity, message, type
+        });
+        res.send({ status: "ok", data: "Message Create" });
+    } catch (error) {
+        res.send({ status: "error", data: error });
+       
+    }
+});
+
+app.post('/getusermessage', async (req, res) => {
+    const { userid } = req.body;
+    try {
+        const userMessage = await messageboxnews.find({ userid: userid });
+        if (userMessage.length === 0) {
+            return res.status(200).send({ status: "ok", data: [], message: "No Message found " });
+        }
+        return res.status(200).send({ status: "ok", data: userMessage });
+    } catch (error) {
+        return res.status(500).send({ status: "error", data: [], message: "An error occurred", error: error.message });
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
