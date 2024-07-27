@@ -8,7 +8,7 @@ const LoanSchema = new mongoose.Schema(
         userid: { type: String, required: true, },
         applicant_name: { type: String, required: true },
         applicant_mobile: { type: Number, required: true },
-        vehicle_name: { type: String, required: true },
+        vehicle_name: { type: String },
         applicant_aadharcard_number: { type: Number,  },
         applicant_aadharcard: { type: [String],  },
         applicant_pancard_number: { type: String,  },
