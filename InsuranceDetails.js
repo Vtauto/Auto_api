@@ -64,14 +64,22 @@ const InsuranceSchema = new mongoose.Schema(
         },
         other: {
             type: [String], // storing file paths
+        },
+        quotation: {
+            type: String, // storing file paths
+            default:"null"
+        },
+        policy: {
+            type: String, // storing file paths
+            default:"null"
 
         },
     },
     { timestamps: true },
     {
-        collection: "allinsurancenew",
+        collection: "allinsurancenew11",
     }
 );
 
 
-mongoose.model("allinsurancenew", InsuranceSchema);
+mongoose.model("allinsurancenew11", InsuranceSchema);

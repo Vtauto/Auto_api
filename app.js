@@ -24,7 +24,7 @@ require("./UserDetails");
 const User = mongoose.model("User");
 
 require("./InsuranceDetails");
-const allinsurance = mongoose.model("allinsurancenew");
+const allinsurance = mongoose.model("allinsurancenew11");
 
 require("./RtoDetails");
 const allrtoinformation = mongoose.model("allrtoinformationnew");
